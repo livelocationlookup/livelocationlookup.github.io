@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How GPS Works: Satellites, Signals and Your Phone | Live Location Lookup</title>
+<meta name="description" content="How GPS Works: Satellites, Signals and Your Phone">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#fff8f0;color:#22283b;line-height:1.65}
+a{color:#e91e63;text-decoration:none}
+a:hover{text-decoration:underline}
+header{background:linear-gradient(135deg,#ff6b6b,#feca57,#48dbfb,#1dd1a1);padding:18px 20px;color:#fff}
+header .wrap{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.logo{font-size:26px;font-weight:800;color:#fff}
+nav a{color:#fff;font-weight:600;margin-left:16px}
+.hero{background:linear-gradient(135deg,#feca57,#ff9ff3);border-radius:24px;padding:36px 28px;margin:24px auto;text-align:center;max-width:1000px}
+.hero h1{font-size:34px;color:#22283b}
+.hero p{font-size:18px;color:#444;margin-top:10px}
+main{max-width:1000px;margin:0 auto;padding:0 20px 40px}
+.card{background:#fff;border:2px solid #ffeaa7;border-radius:20px;padding:22px;margin:18px 0;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.card h2{color:#e91e63;margin-bottom:10px}
+button{background:#e91e63;color:#fff;border:0;border-radius:999px;padding:12px 26px;font-size:16px;font-weight:700;cursor:pointer}
+button:hover{background:#c2185b}
+input,select{padding:10px 12px;border:2px solid #dfe6e9;border-radius:12px;font-size:15px;width:100%;margin:6px 0}
+label{font-weight:600}
+.result{background:#f1f8ff;border-radius:14px;padding:16px;margin-top:14px;word-break:break-word}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.toolcard{background:#fff;border-radius:18px;padding:18px;border:2px solid #a29bfe}
+.toolcard h3{color:#6c5ce7}
+.articlecard{background:#fff;border-radius:18px;overflow:hidden;border:2px solid #ffeaa7}
+.articlecard img{width:100%;height:180px;object-fit:cover;display:block}
+.articlecard .body{padding:16px}
+.articlecard h3{font-size:17px}
+.articlecard h3 a{color:#22283b}
+.note{background:#fff3cd;border-left:5px solid #feca57;padding:12px 16px;border-radius:10px;margin:14px 0}
+footer{background:#22283b;color:#dfe6e9;text-align:center;padding:26px 16px;margin-top:30px}
+footer a{color:#feca57}
+article img.heroimg{width:100%;max-height:380px;object-fit:cover;border-radius:18px;margin:16px 0}
+h1{font-size:30px;margin:18px 0 8px}
+h2{font-size:23px;margin:22px 0 8px;color:#e91e63}
+h3{font-size:19px;margin:18px 0 6px}
+p{margin:10px 0}
+ul,ol{margin:10px 0 10px 24px}
+.faq{background:#f8f9fa;border-radius:14px;padding:16px;margin-top:20px}
+.faq h2{color:#6c5ce7}
+@media(max-width:640px){.hero h1{font-size:26px}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/index.html">📍 Live Location Lookup</a>
+<nav><a href="/index.html">Home</a><a href="/tools/coordinates-to-map-link.html">Tools</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav></div></header>
+<main><article>
+<h1>How GPS Works: Satellites, Signals and Your Phone</h1>
+<img class="heroimg" src="/images/how-gps-works.jpg" alt="How GPS Works: Satellites, Signals and Your Phone">
+<p>GPS feels like magic — tap a button and a dot appears on a map — but it is really just very precise timing. The system is built on a fleet of about thirty satellites orbiting Earth at roughly twenty thousand kilometres up. Each satellite broadcasts a radio signal stamped with the exact time it was sent, using an atomic clock accurate to billionths of a second. Your phone listens to those signals and works out how long each one took to arrive.</p><p>Distance is the key. Radio signals travel at the speed of light, so if a signal took a fraction of a second to reach you, your phone can calculate how far away that satellite is. With one satellite, you know you are somewhere on a huge sphere around it. With two, the possibilities narrow to a circle. With three, they narrow to two points. With four, the maths pins down a single point — and also corrects for the fact that your phone's clock is far less accurate than the atomic clocks in space. That is why a GPS fix needs at least four satellites, and why more satellites mean a better fix.</p><p>Your phone does not talk back to the satellites. GPS is a one-way system: the satellites broadcast, and billions of receivers listen silently. That is why GPS works anywhere on Earth with a clear view of the sky, from a desert to the middle of the ocean, and why it cannot be overloaded by too many users. It is also why GPS itself uses no mobile data — the positioning is free, though downloading the map around your position usually needs a connection.</p><p>Modern phones combine GPS with other systems. The American GPS network is joined by Russia's GLONASS, Europe's Galileo, and China's BeiDou, and most new phones listen to several at once, which means more satellites in view and a faster, more accurate fix. Assisted GPS, or A-GPS, uses the mobile network to tell the phone roughly where the satellites are, cutting the time to first fix from minutes to seconds. Wi-Fi and Bluetooth beacons fill in the gaps indoors, where satellite signals cannot reach.</p><p>GPS is not perfect. Signals bounce off buildings, weaken under trees and roofs, and can be deliberately jammed or spoofed in conflict zones. A phone in a pocket or a car park will always be less accurate than one held up in open sky. And GPS tells you where you are, not where you are going — your direction comes from the compass and from watching your position change over time, which is why a sat-nav sometimes points the wrong way for the first few metres of a journey.</p><p>Despite those limits, GPS is one of the most remarkable public systems ever built. It guides aircraft, ships, and emergency services, timestamps financial transactions, and sits in every smartphone on the planet. The next time your map snaps to your location in seconds, spare a thought for the atomic clocks twenty thousand kilometres overhead, quietly broadcasting the time so your phone can work out exactly where you are.</p>
+<div class="faq"><h2>Frequently Asked Questions</h2><h3>Does GPS use mobile data?</h3><p>No. GPS positioning is free and works offline. Only the map tiles and traffic data need an internet connection.</p><h3>Why does GPS take a while the first time?</h3><p>The phone needs to download satellite positions. A-GPS speeds this up using the mobile network; without it, a cold start can take a few minutes.</p><h3>How many satellites do I need for a fix?</h3><p>At least four for a full three-dimensional fix. More satellites in view generally means better accuracy.</p></div>
+<h2>More location guides</h2><ul><li><a href="/guides/how-to-find-your-current-location.html">How to Find Your Current Location on Any Device</a></li><li><a href="/guides/how-to-share-your-live-location.html">How to Share Your Live Location Safely with Friends and Family</a></li><li><a href="/guides/latitude-longitude-explained.html">Latitude and Longitude Explained in Simple Words</a></li><li><a href="/guides/gps-accuracy-how-to-improve-it.html">GPS Accuracy: Why It Goes Wrong and How to Improve It</a></li><li><a href="/guides/what-is-a-timezone-and-how-to-find-yours.html">What Is a Timezone and How Do You Find Yours?</a></li><li><a href="/guides/google-maps-vs-openstreetmap.html">Google Maps vs OpenStreetMap: Which Should You Use?</a></li><li><a href="/guides/plus-codes-explained.html">Plus Codes Explained: Addresses for Places Without Street Names</a></li><li><a href="/guides/location-privacy-protect-yourself.html">Location Privacy: How to Protect Where You Go</a></li><li><a href="/guides/distance-between-two-places.html">Distance Between Two Places: How It Is Calculated</a></li><li><a href="/guides/offline-maps-travel-without-internet.html">Offline Maps: How to Travel Without Internet</a></li><li><a href="/guides/find-my-phone-location.html">Find My Phone: How Location Helps You Recover a Lost Device</a></li><li><a href="/guides/what-is-geocoding.html">What Is Geocoding? Turning Addresses into Coordinates</a></li><li><a href="/guides/how-to-drop-a-pin-and-share-it.html">How to Drop a Pin and Share It with Anyone</a></li><li><a href="/guides/emergency-location-how-to-share-where-you-are.html">Emergency Location: How to Share Where You Are When It Matters</a></li><li><a href="/guides/ip-address-vs-location.html">IP Address vs GPS Location: What Is the Difference?</a></li><li><a href="/guides/how-to-find-coordinates-of-any-place.html">How to Find the Coordinates of Any Place on the Map</a></li><li><a href="/guides/location-services-battery-drain.html">Do Location Services Drain Your Battery? What Really Helps</a></li><li><a href="/guides/travel-timezones-jet-lag-tips.html">Travelling Across Timezones: Beat Jet Lag and Stay on Time</a></li><li><a href="/guides/how-maps-know-traffic.html">How Do Maps Know About Traffic? The Data Behind the Colours</a></li></ul>
+<p><a href="/index.html">← Back to home</a></p></article></main>
+<footer><p>Live Location Lookup — find, share and understand your location.</p>
+<p><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+<p>© 2026 Live Location Lookup</p></footer>
+</body>
+</html>
