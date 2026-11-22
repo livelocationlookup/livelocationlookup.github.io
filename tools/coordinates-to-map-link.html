@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coordinates to Map Link | Live Location Lookup</title>
+<meta name="description" content="Turn any latitude and longitude into links for Google Maps and OpenStreetMap.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#fff8f0;color:#22283b;line-height:1.65}
+a{color:#e91e63;text-decoration:none}
+a:hover{text-decoration:underline}
+header{background:linear-gradient(135deg,#ff6b6b,#feca57,#48dbfb,#1dd1a1);padding:18px 20px;color:#fff}
+header .wrap{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.logo{font-size:26px;font-weight:800;color:#fff}
+nav a{color:#fff;font-weight:600;margin-left:16px}
+.hero{background:linear-gradient(135deg,#feca57,#ff9ff3);border-radius:24px;padding:36px 28px;margin:24px auto;text-align:center;max-width:1000px}
+.hero h1{font-size:34px;color:#22283b}
+.hero p{font-size:18px;color:#444;margin-top:10px}
+main{max-width:1000px;margin:0 auto;padding:0 20px 40px}
+.card{background:#fff;border:2px solid #ffeaa7;border-radius:20px;padding:22px;margin:18px 0;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.card h2{color:#e91e63;margin-bottom:10px}
+button{background:#e91e63;color:#fff;border:0;border-radius:999px;padding:12px 26px;font-size:16px;font-weight:700;cursor:pointer}
+button:hover{background:#c2185b}
+input,select{padding:10px 12px;border:2px solid #dfe6e9;border-radius:12px;font-size:15px;width:100%;margin:6px 0}
+label{font-weight:600}
+.result{background:#f1f8ff;border-radius:14px;padding:16px;margin-top:14px;word-break:break-word}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.toolcard{background:#fff;border-radius:18px;padding:18px;border:2px solid #a29bfe}
+.toolcard h3{color:#6c5ce7}
+.articlecard{background:#fff;border-radius:18px;overflow:hidden;border:2px solid #ffeaa7}
+.articlecard img{width:100%;height:180px;object-fit:cover;display:block}
+.articlecard .body{padding:16px}
+.articlecard h3{font-size:17px}
+.articlecard h3 a{color:#22283b}
+.note{background:#fff3cd;border-left:5px solid #feca57;padding:12px 16px;border-radius:10px;margin:14px 0}
+footer{background:#22283b;color:#dfe6e9;text-align:center;padding:26px 16px;margin-top:30px}
+footer a{color:#feca57}
+article img.heroimg{width:100%;max-height:380px;object-fit:cover;border-radius:18px;margin:16px 0}
+h1{font-size:30px;margin:18px 0 8px}
+h2{font-size:23px;margin:22px 0 8px;color:#e91e63}
+h3{font-size:19px;margin:18px 0 6px}
+p{margin:10px 0}
+ul,ol{margin:10px 0 10px 24px}
+.faq{background:#f8f9fa;border-radius:14px;padding:16px;margin-top:20px}
+.faq h2{color:#6c5ce7}
+@media(max-width:640px){.hero h1{font-size:26px}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/index.html">📍 Live Location Lookup</a>
+<nav><a href="/index.html">Home</a><a href="/tools/coordinates-to-map-link.html">Tools</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav></div></header>
+<main><h1>Coordinates to Map Link</h1><p>Turn any latitude and longitude into links for Google Maps and OpenStreetMap.</p><div class="card"><h2>Coordinates to Map Link</h2>
+<p>Enter latitude and longitude (decimal degrees, e.g. 24.8607, 67.0011) and get instant map links.</p>
+<label>Latitude</label><input id="lat" type="number" step="any" placeholder="e.g. 24.8607">
+<label>Longitude</label><input id="lng" type="number" step="any" placeholder="e.g. 67.0011">
+<button onclick="go()">Get map links</button><div class="result" id="out"><p>Enter coordinates above.</p></div></div>
+<script>
+function go(){var la=parseFloat(document.getElementById('lat').value),lo=parseFloat(document.getElementById('lng').value);
+var o=document.getElementById('out');
+if(isNaN(la)||isNaN(lo)||la<-90||la>90||lo<-180||lo>180){o.innerHTML='<p>Please enter valid coordinates: latitude -90 to 90, longitude -180 to 180.</p>';return;}
+var g='https://www.google.com/maps/search/?api=1&query='+la+','+lo;
+var s='https://www.openstreetmap.org/?mlat='+la+'&mlon='+lo+'#map=15/'+la+'/'+lo;
+o.innerHTML='<p><strong>Coordinates:</strong> '+la+', '+lo+'</p><p><a href="'+g+'" target="_blank" rel="noopener">Open in Google Maps</a></p><p><a href="'+s+'" target="_blank" rel="noopener">Open in OpenStreetMap</a></p>';}
+</script><p><a href="/index.html">← Back to home</a></p></main>
+<footer><p>Live Location Lookup — find, share and understand your location.</p>
+<p><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+<p>© 2026 Live Location Lookup</p></footer>
+</body>
+</html>

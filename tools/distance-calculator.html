@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distance Calculator | Live Location Lookup</title>
+<meta name="description" content="Calculate the straight-line distance between two points using the haversine formula.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#fff8f0;color:#22283b;line-height:1.65}
+a{color:#e91e63;text-decoration:none}
+a:hover{text-decoration:underline}
+header{background:linear-gradient(135deg,#ff6b6b,#feca57,#48dbfb,#1dd1a1);padding:18px 20px;color:#fff}
+header .wrap{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.logo{font-size:26px;font-weight:800;color:#fff}
+nav a{color:#fff;font-weight:600;margin-left:16px}
+.hero{background:linear-gradient(135deg,#feca57,#ff9ff3);border-radius:24px;padding:36px 28px;margin:24px auto;text-align:center;max-width:1000px}
+.hero h1{font-size:34px;color:#22283b}
+.hero p{font-size:18px;color:#444;margin-top:10px}
+main{max-width:1000px;margin:0 auto;padding:0 20px 40px}
+.card{background:#fff;border:2px solid #ffeaa7;border-radius:20px;padding:22px;margin:18px 0;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.card h2{color:#e91e63;margin-bottom:10px}
+button{background:#e91e63;color:#fff;border:0;border-radius:999px;padding:12px 26px;font-size:16px;font-weight:700;cursor:pointer}
+button:hover{background:#c2185b}
+input,select{padding:10px 12px;border:2px solid #dfe6e9;border-radius:12px;font-size:15px;width:100%;margin:6px 0}
+label{font-weight:600}
+.result{background:#f1f8ff;border-radius:14px;padding:16px;margin-top:14px;word-break:break-word}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.toolcard{background:#fff;border-radius:18px;padding:18px;border:2px solid #a29bfe}
+.toolcard h3{color:#6c5ce7}
+.articlecard{background:#fff;border-radius:18px;overflow:hidden;border:2px solid #ffeaa7}
+.articlecard img{width:100%;height:180px;object-fit:cover;display:block}
+.articlecard .body{padding:16px}
+.articlecard h3{font-size:17px}
+.articlecard h3 a{color:#22283b}
+.note{background:#fff3cd;border-left:5px solid #feca57;padding:12px 16px;border-radius:10px;margin:14px 0}
+footer{background:#22283b;color:#dfe6e9;text-align:center;padding:26px 16px;margin-top:30px}
+footer a{color:#feca57}
+article img.heroimg{width:100%;max-height:380px;object-fit:cover;border-radius:18px;margin:16px 0}
+h1{font-size:30px;margin:18px 0 8px}
+h2{font-size:23px;margin:22px 0 8px;color:#e91e63}
+h3{font-size:19px;margin:18px 0 6px}
+p{margin:10px 0}
+ul,ol{margin:10px 0 10px 24px}
+.faq{background:#f8f9fa;border-radius:14px;padding:16px;margin-top:20px}
+.faq h2{color:#6c5ce7}
+@media(max-width:640px){.hero h1{font-size:26px}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/index.html">📍 Live Location Lookup</a>
+<nav><a href="/index.html">Home</a><a href="/tools/coordinates-to-map-link.html">Tools</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav></div></header>
+<main><h1>Distance Calculator</h1><p>Calculate the straight-line distance between two points using the haversine formula.</p><div class="card"><h2>Distance Calculator</h2>
+<p>Enter two pairs of coordinates. The tool calculates the straight-line (great-circle) distance with the haversine formula, in kilometres and miles.</p>
+<label>Point A — Latitude</label><input id="lat1" type="number" step="any" placeholder="e.g. 24.8607">
+<label>Point A — Longitude</label><input id="lng1" type="number" step="any" placeholder="e.g. 67.0011">
+<label>Point B — Latitude</label><input id="lat2" type="number" step="any" placeholder="e.g. 31.5204">
+<label>Point B — Longitude</label><input id="lng2" type="number" step="any" placeholder="e.g. 74.3587">
+<button onclick="calc()">Calculate distance</button><div class="result" id="out"><p>Enter both points above.</p></div>
+<p style="margin-top:12px">This is the as-the-crow-flies distance. Driving distance is always longer because roads follow terrain and traffic.</p></div>
+<script>
+function calc(){var a=[parseFloat(document.getElementById('lat1').value),parseFloat(document.getElementById('lng1').value),parseFloat(document.getElementById('lat2').value),parseFloat(document.getElementById('lng2').value)];
+var o=document.getElementById('out');
+if(a.some(isNaN)||a[0]<-90||a[0]>90||a[2]<-90||a[2]>90||a[1]<-180||a[1]>180||a[3]<-180||a[3]>180){o.innerHTML='<p>Please enter valid coordinates for both points.</p>';return;}
+var R=6371,toRad=function(d){return d*Math.PI/180;};
+var dLa=toRad(a[2]-a[0]),dLo=toRad(a[3]-a[1]);
+var h=Math.sin(dLa/2)*Math.sin(dLa/2)+Math.cos(toRad(a[0]))*Math.cos(toRad(a[2]))*Math.sin(dLo/2)*Math.sin(dLo/2);
+var c=2*Math.atan2(Math.sqrt(h),Math.sqrt(1-h));
+var km=R*c, mi=km*0.621371;
+o.innerHTML='<p><strong>Distance: '+km.toFixed(2)+' km ('+mi.toFixed(2)+' miles)</strong></p><p>Calculated with the haversine formula, treating Earth as a sphere of radius 6,371 km.</p>';}
+</script><p><a href="/index.html">← Back to home</a></p></main>
+<footer><p>Live Location Lookup — find, share and understand your location.</p>
+<p><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+<p>© 2026 Live Location Lookup</p></footer>
+</body>
+</html>
