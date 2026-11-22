@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Location Lookup — Find Your Coordinates, Timezone &amp; Map Links</title>
+<meta name="description" content="Find your live location, coordinates, timezone and map links, plus free tools and guides about GPS, maps and location privacy.">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#fff8f0;color:#22283b;line-height:1.65}
+a{color:#e91e63;text-decoration:none}
+a:hover{text-decoration:underline}
+header{background:linear-gradient(135deg,#ff6b6b,#feca57,#48dbfb,#1dd1a1);padding:18px 20px;color:#fff}
+header .wrap{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.logo{font-size:26px;font-weight:800;color:#fff}
+nav a{color:#fff;font-weight:600;margin-left:16px}
+.hero{background:linear-gradient(135deg,#feca57,#ff9ff3);border-radius:24px;padding:36px 28px;margin:24px auto;text-align:center;max-width:1000px}
+.hero h1{font-size:34px;color:#22283b}
+.hero p{font-size:18px;color:#444;margin-top:10px}
+main{max-width:1000px;margin:0 auto;padding:0 20px 40px}
+.card{background:#fff;border:2px solid #ffeaa7;border-radius:20px;padding:22px;margin:18px 0;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.card h2{color:#e91e63;margin-bottom:10px}
+button{background:#e91e63;color:#fff;border:0;border-radius:999px;padding:12px 26px;font-size:16px;font-weight:700;cursor:pointer}
+button:hover{background:#c2185b}
+input,select{padding:10px 12px;border:2px solid #dfe6e9;border-radius:12px;font-size:15px;width:100%;margin:6px 0}
+label{font-weight:600}
+.result{background:#f1f8ff;border-radius:14px;padding:16px;margin-top:14px;word-break:break-word}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.toolcard{background:#fff;border-radius:18px;padding:18px;border:2px solid #a29bfe}
+.toolcard h3{color:#6c5ce7}
+.articlecard{background:#fff;border-radius:18px;overflow:hidden;border:2px solid #ffeaa7}
+.articlecard img{width:100%;height:180px;object-fit:cover;display:block}
+.articlecard .body{padding:16px}
+.articlecard h3{font-size:17px}
+.articlecard h3 a{color:#22283b}
+.note{background:#fff3cd;border-left:5px solid #feca57;padding:12px 16px;border-radius:10px;margin:14px 0}
+footer{background:#22283b;color:#dfe6e9;text-align:center;padding:26px 16px;margin-top:30px}
+footer a{color:#feca57}
+article img.heroimg{width:100%;max-height:380px;object-fit:cover;border-radius:18px;margin:16px 0}
+h1{font-size:30px;margin:18px 0 8px}
+h2{font-size:23px;margin:22px 0 8px;color:#e91e63}
+h3{font-size:19px;margin:18px 0 6px}
+p{margin:10px 0}
+ul,ol{margin:10px 0 10px 24px}
+.faq{background:#f8f9fa;border-radius:14px;padding:16px;margin-top:20px}
+.faq h2{color:#6c5ce7}
+@media(max-width:640px){.hero h1{font-size:26px}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/index.html">📍 Live Location Lookup</a>
+<nav><a href="/index.html">Home</a><a href="/tools/coordinates-to-map-link.html">Tools</a><a href="/about.html">About</a><a href="/contact.html">Contact</a></nav></div></header>
+<main><div class="hero"><h1>Find Your Live Location in One Click</h1>
+<p>Your exact coordinates, accuracy, timezone and map links — right here, right now.</p></div>
+<div class="card"><h2>Live Location</h2>
+<p>This tool uses your browser's geolocation API. It asks for your permission first, and it runs entirely in your browser — your location is never sent to any server and never stored.</p>
+<button onclick="locate()">Find my live location</button>
+<div class="result" id="loc"><p>Click the button and allow location access when your browser asks.</p></div></div>
+<script>
+function locate(){var o=document.getElementById('loc');
+if(!navigator.geolocation){o.innerHTML='<p>Geolocation is not supported by this browser.</p>';return;}
+o.innerHTML='<p>Waiting for your location…</p>';
+navigator.geolocation.getCurrentPosition(function(p){
+var la=p.coords.latitude.toFixed(6),lo=p.coords.longitude.toFixed(6);
+var tz='';try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone;}catch(e){tz='unknown';}
+var g='https://www.google.com/maps/search/?api=1&query='+la+','+lo;
+var s='https://www.openstreetmap.org/?mlat='+la+'&mlon='+lo+'#map=16/'+la+'/'+lo;
+o.innerHTML='<p><strong>Latitude:</strong> '+la+'</p><p><strong>Longitude:</strong> '+lo+'</p><p><strong>Accuracy:</strong> about '+Math.round(p.coords.accuracy)+' metres</p><p><strong>Timezone:</strong> '+tz+'</p><p><a href="'+g+'" target="_blank" rel="noopener">Open in Google Maps</a> · <a href="'+s+'" target="_blank" rel="noopener">Open in OpenStreetMap</a></p>';
+},function(e){o.innerHTML='<p>Could not get your location: '+e.message+'. Please allow location permission and try again.</p>';},{enableHighAccuracy:true,timeout:15000});}
+</script><h2>More location tools</h2><div class="grid"><div class="toolcard"><h3>Coordinates to Map Link</h3><p>Turn any latitude and longitude into links for Google Maps and OpenStreetMap.</p><p><a href="/tools/coordinates-to-map-link.html">Open tool →</a></p></div><div class="toolcard"><h3>Timezone Finder</h3><p>See your browser timezone, and find the timezone of any coordinates.</p><p><a href="/tools/timezone-finder.html">Open tool →</a></p></div><div class="toolcard"><h3>Plus Code Finder</h3><p>Generate an Open Location Code (plus code) for any coordinates.</p><p><a href="/tools/plus-code-finder.html">Open tool →</a></p></div><div class="toolcard"><h3>Distance Calculator</h3><p>Calculate the straight-line distance between two points using the haversine formula.</p><p><a href="/tools/distance-calculator.html">Open tool →</a></p></div></div>
+<h2 style="margin-top:30px">Location guides</h2><div class="grid"><div class="articlecard"><img src="/images/how-to-find-your-current-location.jpg" alt="How to Find Your Current Location on Any Device"><div class="body"><h3><a href="/guides/how-to-find-your-current-location.html">How to Find Your Current Location on Any Device</a></h3><p><a href="/guides/how-to-find-your-current-location.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/how-to-share-your-live-location.jpg" alt="How to Share Your Live Location Safely with Friends and Family"><div class="body"><h3><a href="/guides/how-to-share-your-live-location.html">How to Share Your Live Location Safely with Friends and Family</a></h3><p><a href="/guides/how-to-share-your-live-location.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/latitude-longitude-explained.jpg" alt="Latitude and Longitude Explained in Simple Words"><div class="body"><h3><a href="/guides/latitude-longitude-explained.html">Latitude and Longitude Explained in Simple Words</a></h3><p><a href="/guides/latitude-longitude-explained.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/gps-accuracy-how-to-improve-it.jpg" alt="GPS Accuracy: Why It Goes Wrong and How to Improve It"><div class="body"><h3><a href="/guides/gps-accuracy-how-to-improve-it.html">GPS Accuracy: Why It Goes Wrong and How to Improve It</a></h3><p><a href="/guides/gps-accuracy-how-to-improve-it.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/what-is-a-timezone-and-how-to-find-yours.jpg" alt="What Is a Timezone and How Do You Find Yours?"><div class="body"><h3><a href="/guides/what-is-a-timezone-and-how-to-find-yours.html">What Is a Timezone and How Do You Find Yours?</a></h3><p><a href="/guides/what-is-a-timezone-and-how-to-find-yours.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/google-maps-vs-openstreetmap.jpg" alt="Google Maps vs OpenStreetMap: Which Should You Use?"><div class="body"><h3><a href="/guides/google-maps-vs-openstreetmap.html">Google Maps vs OpenStreetMap: Which Should You Use?</a></h3><p><a href="/guides/google-maps-vs-openstreetmap.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/how-gps-works.jpg" alt="How GPS Works: Satellites, Signals and Your Phone"><div class="body"><h3><a href="/guides/how-gps-works.html">How GPS Works: Satellites, Signals and Your Phone</a></h3><p><a href="/guides/how-gps-works.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/plus-codes-explained.jpg" alt="Plus Codes Explained: Addresses for Places Without Street Names"><div class="body"><h3><a href="/guides/plus-codes-explained.html">Plus Codes Explained: Addresses for Places Without Street Names</a></h3><p><a href="/guides/plus-codes-explained.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/location-privacy-protect-yourself.jpg" alt="Location Privacy: How to Protect Where You Go"><div class="body"><h3><a href="/guides/location-privacy-protect-yourself.html">Location Privacy: How to Protect Where You Go</a></h3><p><a href="/guides/location-privacy-protect-yourself.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/distance-between-two-places.jpg" alt="Distance Between Two Places: How It Is Calculated"><div class="body"><h3><a href="/guides/distance-between-two-places.html">Distance Between Two Places: How It Is Calculated</a></h3><p><a href="/guides/distance-between-two-places.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/offline-maps-travel-without-internet.jpg" alt="Offline Maps: How to Travel Without Internet"><div class="body"><h3><a href="/guides/offline-maps-travel-without-internet.html">Offline Maps: How to Travel Without Internet</a></h3><p><a href="/guides/offline-maps-travel-without-internet.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/find-my-phone-location.jpg" alt="Find My Phone: How Location Helps You Recover a Lost Device"><div class="body"><h3><a href="/guides/find-my-phone-location.html">Find My Phone: How Location Helps You Recover a Lost Device</a></h3><p><a href="/guides/find-my-phone-location.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/what-is-geocoding.jpg" alt="What Is Geocoding? Turning Addresses into Coordinates"><div class="body"><h3><a href="/guides/what-is-geocoding.html">What Is Geocoding? Turning Addresses into Coordinates</a></h3><p><a href="/guides/what-is-geocoding.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/how-to-drop-a-pin-and-share-it.jpg" alt="How to Drop a Pin and Share It with Anyone"><div class="body"><h3><a href="/guides/how-to-drop-a-pin-and-share-it.html">How to Drop a Pin and Share It with Anyone</a></h3><p><a href="/guides/how-to-drop-a-pin-and-share-it.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/emergency-location-how-to-share-where-you-are.jpg" alt="Emergency Location: How to Share Where You Are When It Matters"><div class="body"><h3><a href="/guides/emergency-location-how-to-share-where-you-are.html">Emergency Location: How to Share Where You Are When It Matters</a></h3><p><a href="/guides/emergency-location-how-to-share-where-you-are.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/ip-address-vs-location.jpg" alt="IP Address vs GPS Location: What Is the Difference?"><div class="body"><h3><a href="/guides/ip-address-vs-location.html">IP Address vs GPS Location: What Is the Difference?</a></h3><p><a href="/guides/ip-address-vs-location.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/how-to-find-coordinates-of-any-place.jpg" alt="How to Find the Coordinates of Any Place on the Map"><div class="body"><h3><a href="/guides/how-to-find-coordinates-of-any-place.html">How to Find the Coordinates of Any Place on the Map</a></h3><p><a href="/guides/how-to-find-coordinates-of-any-place.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/location-services-battery-drain.jpg" alt="Do Location Services Drain Your Battery? What Really Helps"><div class="body"><h3><a href="/guides/location-services-battery-drain.html">Do Location Services Drain Your Battery? What Really Helps</a></h3><p><a href="/guides/location-services-battery-drain.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/travel-timezones-jet-lag-tips.jpg" alt="Travelling Across Timezones: Beat Jet Lag and Stay on Time"><div class="body"><h3><a href="/guides/travel-timezones-jet-lag-tips.html">Travelling Across Timezones: Beat Jet Lag and Stay on Time</a></h3><p><a href="/guides/travel-timezones-jet-lag-tips.html">Read the guide →</a></p></div></div><div class="articlecard"><img src="/images/how-maps-know-traffic.jpg" alt="How Do Maps Know About Traffic? The Data Behind the Colours"><div class="body"><h3><a href="/guides/how-maps-know-traffic.html">How Do Maps Know About Traffic? The Data Behind the Colours</a></h3><p><a href="/guides/how-maps-know-traffic.html">Read the guide →</a></p></div></div></div></main>
+<footer><p>Live Location Lookup — find, share and understand your location.</p>
+<p><a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/disclaimer.html">Disclaimer</a></p>
+<p>© 2026 Live Location Lookup</p></footer>
+</body>
+</html>
